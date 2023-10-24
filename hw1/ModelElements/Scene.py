@@ -4,13 +4,17 @@ from Camera import Camera
 
 
 class Scene:
-    def __init__(self, id: int, models: PoligonalModel, flashes: Flash, cameras: Camera) -> None:
+    def __init__(self, id: int, poligonal_models, flashes: Flash, cameras) -> None:
         self.id = id
-        if models is not None:
-            self.models = models
+        if len(poligonal_models) > 1:
+            self.models = poligonal_models
+        else:
+            raise Exception('В списке должно быть более 1 экземпляров класса PoligonalModel')
         self.flashes = flashes
-        if cameras is not None:
+        if len(cameras) > 1:
             self.cameras = cameras
+        else:
+            raise Exception('В списке должно быть более 1 экземпляров класса Camera')
 
     def method_1(self, data) -> None:
         pass
