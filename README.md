@@ -61,3 +61,12 @@ ISO/IEC/IEEE 29148:2018 Systems and software engineering — Life cycle processe
 
 Разработать диаграмму компонент в UML включая слои пользовательского интерфейса и бизнес-логики.
 
+## Урок 8. Типы архитектур прикладных приложений (мобильные): MVC, MVP, MVVM.
+
+Разработать экранные формы интерфейса в https://www.figma.com/ или https://app.diagrams.net/.
+
+Разработать полную ERD домена в https://www.dbdesigner.net/.
+
+Разробать полную UML(MVP) в https://online.visual-paradigm.com
+
+Разработать блок-схему алгоритма взамодействия MVP.
