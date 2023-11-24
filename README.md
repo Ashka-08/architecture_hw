@@ -75,7 +75,7 @@ ISO/IEC/IEEE 29148:2018 Systems and software engineering — Life cycle processe
 
 Разработать полную ERD домена в https://www.dbdesigner.net/.
 
-Дополнить swagger ответами домена (cloud) и смоделировать ошибки REST «400, 500» типов.
+Дополнить swagger (https://editor.swagger.io/) ответами домена (cloud) и смоделировать ошибки REST «400, 500» типов.
 
 Так же добавить PUT запрос
 

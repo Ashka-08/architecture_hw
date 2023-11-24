@@ -1,0 +1,242 @@
+openapi: 3.0.1
+info:
+  title: Получение информации о роботе пылесосе
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /robots:
+    get:
+      summary: Метод получения списка роботов
+      tags: 
+        - Robots
+      operationId: getAllRobots
+      responses:
+        "200":
+          description: Успешный ответ со спиcком Роботов
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Robots"
+        "500":
+          description: Internal Server Error
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления нового робота в список
+      tags: 
+        - Robots
+      operationId: createRobot
+      requestBody:
+        required: true
+        content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Robot" 
+      responses:
+        "200":
+          description: Усшный ответ добавления нового робота
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Robot"
+        "500":
+          description: Internal Server Error
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /robots/{idRobot}:
+    get:
+      summary: Метод получения робота по id
+      tags:
+        - Robots
+      operationId: getRobotId
+      parameters:
+        - name: idRobot
+          in: path
+          required: true
+          description: id Robot
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Усшный ответ получения робота по id
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Robot"
+        "400":
+          description: Invalid idRobot
+        "404":
+          description: Robot not Found
+        "500":
+          description: Internal Server Error
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"  
+    put:
+      summary: Метод редактированния клиента по id
+      tags:
+        - Robots
+      operationId: putRobotId
+      parameters:
+        - name: idRobot
+          in: path
+          required: true
+          description: id Robot
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешное редактрирование робота по id
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Robot"
+        "400":
+          description: Invalid idRobot
+        "404":
+          description: Robot not Found
+        "405":
+          description: Validation exception
+        "500":
+          description: Internal Server Error
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Удаление робота по id
+      tags:
+        - Robots
+      operationId: deleteRobotById
+      parameters:
+        - name: idRobot
+          in: path
+          required: true
+          description: id Robot
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешное удаление робота по id
+          content:
+            adplication/json: {}
+        "500":
+          description: Internal Server Error
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+ 
+ 
+ 
+components:
+  schemas:
+    Robot:
+      type: object
+      required:
+        - model
+        - fabricNomer
+        - version
+        - status
+        - resourses
+        - macAdress
+        - idGroupUser
+        - comment
+      properties:
+        model:
+          type: string
+          example: Xiaomi Mi Robot Vacuum Cleaner
+          description: Модель
+        fabricNomer:
+          type: string
+          description: Фабричный номер
+        version:
+          type: string
+          description: Версия
+        status:
+          type: integer
+          description: Статус
+        resourses:
+          type: integer
+          description: Расходники
+        macAdress:
+          type: integer
+          description: Mac-adress
+        idGroupUser:
+          type: integer 
+          example: 1
+          description: Id группы пользователей
+        version:
+          type: string
+          description: Комментарий
+        
+    Robots:
+      type: array
+      items:
+        $ref: "#/components/schemas/Robot"
+    Error:
+      type: object
+      required:
+        - codeError
+        - messageError
+      properties:
+        codeError:
+          type: string
+          example: 123f456
+          description: Код ошибки
+        messageError:
+          type: string
+          example: error
+          description: Сообщение ошибки
+    User:
+      type: object
+      required:
+        - login
+        - hashPasword
+        - email
+      properties:
+        login:
+          type: string
+          description: Логин
+        hashPasword:
+          type: string
+          description: Пароль
+        email:
+          type: string
+          description: Email 
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+    GroupUsers:
+      type: object
+      required:
+        - idUser1
+        - idUser2
+        - idUser3
+      properties:
+        idUser1:
+          type: integer
+          description: Пользователь_1
+        idUser2:
+          type: integer
+          description: Пользователь_2
+        idUser3:
+          type: integer
+          description: Пользователь_3
