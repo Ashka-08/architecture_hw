@@ -142,7 +142,7 @@ paths:
             adplication/json:
               schema:
                 $ref: "#/components/schemas/Error" 
- /users:
+  /users:
     get:
       summary: Метод получения списка пользователей
       tags: 
@@ -154,7 +154,7 @@ paths:
           content:
             adplication/json:
               schema:
-                $ref: "#/components/schemas/Userы"
+                $ref: "#/components/schemas/Users"
         "500":
           description: Internal Server Error
         "default":
@@ -318,7 +318,7 @@ components:
           type: integer 
           example: 1
           description: Id группы пользователей
-        version:
+        comment:
           type: string
           description: Комментарий
         
